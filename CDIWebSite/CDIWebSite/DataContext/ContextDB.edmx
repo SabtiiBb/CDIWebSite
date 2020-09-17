@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.Evento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="IdEvento" />
+          </Key>
+          <Property Name="IdEvento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="IdTipo" Type="int" />
+          <Property Name="FechaEvento" Type="date" />
+          <Property Name="Lugar" Type="varchar" MaxLength="100" />
+          <Property Name="Capacidad" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.Hermano' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Hermano">
+          <Key>
+            <PropertyRef Name="IdHermano" />
+            <PropertyRef Name="Correo" />
+          </Key>
+          <Property Name="IdHermano" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="FechaNac" Type="date" />
+          <Property Name="Edad" Type="int" />
+          <Property Name="Sexo" Type="char" MaxLength="1" />
+          <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NContacto" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.Inscripciones' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Inscripciones">
+          <Key>
+            <PropertyRef Name="IdInscripciones" />
+          </Key>
+          <Property Name="IdInscripciones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdHermano" Type="int" />
+          <Property Name="IdEvento" Type="int" />
+          <Property Name="Activo" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.MSreplication_options' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.spt_fallback_db' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.spt_fallback_dev' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.spt_fallback_usg' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.spt_monitor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.Tipo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+          </Key>
+          <Property Name="IdTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'master.dbo.spt_values' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <Function Name="sp_MScleanupmergepublisher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_MSrepl_startup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="masterModelStoreContainer">
+          <EntitySet Name="Evento" EntityType="Self.Evento" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Evento].[IdEvento] AS [IdEvento], 
+    [Evento].[Nombre] AS [Nombre], 
+    [Evento].[IdTipo] AS [IdTipo], 
+    [Evento].[FechaEvento] AS [FechaEvento], 
+    [Evento].[Lugar] AS [Lugar], 
+    [Evento].[Capacidad] AS [Capacidad]
+    FROM [dbo].[Evento] AS [Evento]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Hermano" EntityType="Self.Hermano" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Hermano].[IdHermano] AS [IdHermano], 
+    [Hermano].[Nombre] AS [Nombre], 
+    [Hermano].[Apellido] AS [Apellido], 
+    [Hermano].[FechaNac] AS [FechaNac], 
+    [Hermano].[Edad] AS [Edad], 
+    [Hermano].[Sexo] AS [Sexo], 
+    [Hermano].[Correo] AS [Correo], 
+    [Hermano].[NContacto] AS [NContacto]
+    FROM [dbo].[Hermano] AS [Hermano]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Inscripciones" EntityType="Self.Inscripciones" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Inscripciones].[IdInscripciones] AS [IdInscripciones], 
+    [Inscripciones].[IdHermano] AS [IdHermano], 
+    [Inscripciones].[IdEvento] AS [IdEvento], 
+    [Inscripciones].[Activo] AS [Activo]
+    FROM [dbo].[Inscripciones] AS [Inscripciones]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tipo].[IdTipo] AS [IdTipo], 
+    [Tipo].[Nombre] AS [Nombre]
+    FROM [dbo].[Tipo] AS [Tipo]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="IdEvento" />
+          </Key>
+          <Property Name="IdEvento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipo" Type="Int32" />
+          <Property Name="FechaEvento" Type="DateTime" Precision="0" />
+          <Property Name="Lugar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Capacidad" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Hermano">
+          <Key>
+            <PropertyRef Name="IdHermano" />
+            <PropertyRef Name="Correo" />
+          </Key>
+          <Property Name="IdHermano" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNac" Type="DateTime" Precision="0" />
+          <Property Name="Edad" Type="Int32" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NContacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Inscripciones">
+          <Key>
+            <PropertyRef Name="IdInscripciones" />
+          </Key>
+          <Property Name="IdInscripciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdHermano" Type="Int32" />
+          <Property Name="IdEvento" Type="Int32" />
+          <Property Name="Activo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+          </Key>
+          <Property Name="IdTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="masterEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Evento" EntityType="Self.Evento" />
+          <EntitySet Name="Hermano" EntityType="Self.Hermano" />
+          <EntitySet Name="Inscripciones" EntityType="Self.Inscripciones" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities3">
+          <EntitySetMapping Name="Evento">
+            <EntityTypeMapping TypeName="masterModel.Evento">
+              <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="FechaEvento" ColumnName="FechaEvento" />
+                <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hermano">
+            <EntityTypeMapping TypeName="masterModel.Hermano">
+              <MappingFragment StoreEntitySet="Hermano">
+                <ScalarProperty Name="IdHermano" ColumnName="IdHermano" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="NContacto" ColumnName="NContacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inscripciones">
+            <EntityTypeMapping TypeName="masterModel.Inscripciones">
+              <MappingFragment StoreEntitySet="Inscripciones">
+                <ScalarProperty Name="IdInscripciones" ColumnName="IdInscripciones" />
+                <ScalarProperty Name="IdHermano" ColumnName="IdHermano" />
+                <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo">
+            <EntityTypeMapping TypeName="masterModel.Tipo">
+              <MappingFragment StoreEntitySet="Tipo">
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
