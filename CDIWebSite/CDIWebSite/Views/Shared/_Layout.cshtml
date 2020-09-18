@@ -4,39 +4,157 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/Content/img/logo.png" />
+    <link rel="shortcut icon" href="~/Content/img/logo.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@700&family=Parisienne&display=swap" rel="stylesheet">
+
     <title>@ViewBag.Title</title>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/bundles/SweetAlert2/css")
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <img src="~/Content/img/logo.png" />
+            <a class="navbar-brand" href="#">&nbsp; <b class="titulo-iglesia"> Casa de Dios Internacional</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-link">
+                        <a class="nav-link" href="#"><b class="nav-bar-link">Principal</b></a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="nav-link" href="#">Involúcrate</a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="nav-link " href="#">Predicaciones</a>
+                    </li>
                 </ul>
             </div>
-        </div>
-    </div>
-    <div class="container body-content">
+        </nav>
+    </header>
+    <div class="contenedor-index">
+        <a name="Inicio"></a>
+        <br />
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
     </div>
+    <div class="socialfloat">
+        <ul>
+            <li>
+                <a href="#Inicio" class="casita"><i class="fas fa-home"></i></a>
+            </li>
+            <li>
+                <a href="" class="faceboook" target="_blank"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+                <a href="" class="Maail" target="_blank"><i class="fas fa-envelope"></i></a>
+            </li>
+            <li>
+                <a href="" class="ubi" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+            </li>
+            <li>
+                <a href="" class="yutu" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+    <footer class="page-footer font-small mdb-color lighten-3 pt-4">
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+            <!-- Grid row -->
+            <div class="row">
+                <!-- Grid column -->
+                
+                <hr class="clearfix w-100 d-md-none" />
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mb-4">Conócenos</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <p>
+                                <a href="#!">MISIÓN</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#!">VISIÓN</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#!">INVOLÚCRATE</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#!">PREDICACIONES</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none" />
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+                    <!-- Contact details -->
+                    <h5 class="font-weight-bold text-uppercase mb-4">CONTACTOS</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <p><i class="fas fa-home mr-3"></i> Dirección, dirección</p>
+                        </li>
+                        <li>
+                            <p><i class="fas fa-envelope mr-3"></i> correo@example.com</p>
+                        </li>
+                        <li>
+                            <p><i class="fas fa-phone mr-3"></i> + 503 1111-1111</p>
+                        </li>
+                        <li>
+                            <p><i class="fas fa-print mr-3"></i> + 503 1111-1111</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none" />
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+                    <!-- Social buttons -->
+                    <h5 class="font-weight-bold text-uppercase mb-4">SÍGUENOS</h5>
+
+                    <!-- Facebook -->
+                    <a type="button" class="btn-floating btn-fb">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <!-- Twitter -->
+                    <a type="button" class="btn-floating btn-tw">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <!-- Google +-->
+                    <a type="button" class="btn-floating btn-gplus">
+                        <i class="fab fa-google-plus-g"></i>
+                    </a>
+                    <!-- Dribbble -->
+                    <a type="button" class="btn-floating btn-youtube">
+                        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/7a98527200.js" crossorigin="anonymous"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/SweetAlert2/js")

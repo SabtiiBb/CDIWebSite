@@ -1,24 +1,126 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿*{
+    margin:0;
+    padding:0;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.navbar{
+    padding:1rem;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.navbar img{
+    width:3%;
+}
+.socialfloat {
+    position: fixed;
+    left: 0;
+    top: 200px;
+    z-index: 2000;
+    font-size: 1rem;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.socialfloat ul {
+    list-style: none;
+}
+
+.socialfloat ul li a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+}
+
+.socialfloat ul li a.faceboook {
+    padding: 1.2rem;
+}
+
+/*.socialfloat ul li a.Wha {
+    padding: 1.25rem;
+}*/
+
+.socialfloat ul li a.Maail {
+    padding: 1.2rem;
+}
+
+.socialfloat ul li a.ubi {
+    padding: 1.3rem;
+}
+
+.socialfloat ul li a.casita {
+    padding: 1.12rem;
+}
+
+.socialfloat ul li a.yutu {
+    padding: 1.12rem;
+}
+
+.socialfloat ul li a {
+    background: #343A40;
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.socialfloat ul li a.faceboook:hover {
+    background: rgba(5, 113, 230, 0.733);
+    padding: 2rem;
+}
+
+/*.socialfloat ul li a.Wha:hover {
+    background: rgba(46, 224, 46, 0.733);
+    padding: 2rem;
+}*/
+
+.socialfloat ul li a.Maail:hover {
+    background: rgba(216, 54, 25, 0.733);
+    padding: 2rem;
+}
+
+.socialfloat ul li a.casita:hover {
+    background: rgba(216, 165, 25, 0.733);
+    padding: 2rem;
+}
+
+.socialfloat ul li a.ubi:hover {
+    background: rgba(211, 228, 219, 0.733);
+    padding: 2rem;
+}
+
+.socialfloat ul li a.yutu:hover {
+    background: rgba(255, 0, 0, 0.733);
+    padding: 2rem;
+}
+.contenedor-index{
+    padding: 1.5rem;
+}
+
+body{
+   font-family: 'Merriweather Sans', sans-serif;
+}
+
+footer{
+    background: #343A40;
+    color: #FBE05E;
+}
+
+footer a{
+    background: #343A40;
+    color: #FBE05E;
+}
+
+b.titulo-iglesia{
+   font-family: 'Parisienne', cursive;
+   font-size:1.7rem;
+}
+
+b.nav-bar-link{
+    color: #FBE05E;
+}
+
+@media screen and (max-width:600px) {
+    .socialfloat{
+        display:none;
+    }
+
+    .navbar img{
+        width:8%;
+    }
 }
