@@ -4,13 +4,18 @@
 }
 
 .navbar{
-    padding:1rem;
-    background-color: rgba(52, 58, 64, 0.933);
+    padding:0.5rem;
+    background-color: rgb(0, 0, 0);
 }
 
-.navbar img{
-    width:3%;
+.navbar img.desktop-logo{
+    width:25%;
 }
+
+.navbar img.mobil-logo{
+    display:none;
+}
+
 .socialfloat {
     position: fixed;
     left: 0;
@@ -54,7 +59,7 @@
 }
 
 .socialfloat ul li a {
-    background: #343A40;
+    background: rgba(0, 0, 0, 0.933);
     -webkit-transition: all 500ms ease;
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
@@ -98,39 +103,65 @@ body{
 }
 
 footer{
-    background: #343A40;
+    background: rgba(0, 0, 0, 0.933);
     color: #FBE05E;
 }
 
 footer a{
-    background: #343A40;
     color: #FBE05E;
 }
 
 b.titulo-iglesia{
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-   font-size:1.7rem;
+   font-size:2.5rem;   
+   line-height: 1px;
+   margin-top:2rem;
+   padding-top:2rem;
 }
 
 b.subtitlenav{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-   font-size:1.4rem;
+    font-size:1.2rem;
 }
 
 b.nav-bar-link{
     color: #FBE05E;
+    text-align:right;
 }
 
 div.collapse ul{
     text-align:right
 }
 
-@media screen and (max-width:600px) {
+.col-md-2 a:hover{
+    color: white;
+    text-decoration:none;
+}
+
+.siguenos{
+    display:none;
+}
+
+@media screen and (max-width:700px) {
     .socialfloat{
         display:none;
     }
 
-    .navbar img{
-        width:8%;
+    .navbar img.mobil-logo{
+        display:initial;
+        width:80%;
     }
+
+    .navbar {
+        display:flex;
+        display:inline-flex;
+    }
+
+
+    .navbar img.desktop-logo{
+    display:none;
+}
+    .siguenos{
+    display:contents;
+}
 }
