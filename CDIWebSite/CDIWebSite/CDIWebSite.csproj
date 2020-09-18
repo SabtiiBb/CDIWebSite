@@ -200,6 +200,10 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\103728533_583220682623459_9215873224258469045_o.jpg" />
+    <Content Include="Content\img\108205147_602784134000447_5158800697711434897_o.jpg" />
+    <Content Include="Content\img\95042758_547183436227184_8521281262055325696_o.jpg" />
+    <Content Include="Content\img\insp-cuadradas-2.jpg" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\Logo2.png" />
     <Content Include="Content\img\mobil-logo.png" />
