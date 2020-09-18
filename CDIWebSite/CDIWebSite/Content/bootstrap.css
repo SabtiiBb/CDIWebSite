@@ -6791,7 +6791,7 @@ button.bg-dark:focus {
 }
 
 .bg-transparent {
-  background-color: transparent !important;
+  background-color: rgba(31, 83, 135, 0.933);
 }
 
 .border {

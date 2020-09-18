@@ -5,6 +5,7 @@
 
 .navbar{
     padding:1rem;
+    background-color: rgba(52, 58, 64, 0.933);
 }
 
 .navbar img{
@@ -107,12 +108,21 @@ footer a{
 }
 
 b.titulo-iglesia{
-   font-family: 'Parisienne', cursive;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
    font-size:1.7rem;
+}
+
+b.subtitlenav{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   font-size:1.4rem;
 }
 
 b.nav-bar-link{
     color: #FBE05E;
+}
+
+div.collapse ul{
+    text-align:right
 }
 
 @media screen and (max-width:600px) {
