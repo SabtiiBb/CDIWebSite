@@ -272,6 +272,7 @@
     <Content Include="DataContext\ContextDB.edmx.diagram">
       <DependentUpon>ContextDB.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\CDIWebSite.pubxml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
