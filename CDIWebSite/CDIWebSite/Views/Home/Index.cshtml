@@ -37,7 +37,35 @@
 </center>
 <br />
 <br />
-<section class="contenedor sobre-nosotros">
+<div class="row">
+    <div class="col-md-2 col-sm-2 col-lg-2"></div>
+    <div class="col-md-8 col-sm-8 col-lg-8">
+        <div class="autocard">
+            <div class="autocardcontainer">
+                <a name="Historia"></a>
+                <h1 class="titulo">¿Quiénes Somos?</h1>
+                <div class="contenedor-sobre-nosotros">
+                    <div class="contenido-textos">
+                        <p>
+                            En el año de 2006, con un grupo de 4 jóvenes y 2 niños liderados por nuestro pastor David Segovia, graduado de un seminario bautista se inicio nuestra congregación, con el único objetivo de predicar el evangelio bíblico y que cada creyente conociera a Jesús de una forma personal y sea transformada por el poder del Espíritu Santo, actualmente somos una congregación en de 100 personas entre jóvenes , adultos y niños, y tenemos el enfoque de crecer en el conocimiento de la palabra de Dios, la adoración a través de la obediencia al Señor y el cuido espiritual del rebaño del Señor.
+                        </p>
+                        <span id="ReadMore">
+                                <p>
+                                    En el año de 2006, con un grupo de 4 jóvenes y 2 niños liderados por nuestro pastor David Segovia, graduado de un seminario bautista se inicio nuestra congregación, con el único objetivo de predicar el evangelio bíblico y que cada creyente conociera a Jesús de una forma personal y sea transformada por el poder del Espíritu Santo, actualmente somos una congregación en de 100 personas entre jóvenes , adultos y niños, y tenemos el enfoque de crecer en el conocimiento de la palabra de Dios, la adoración a través de la obediencia al Señor y el cuido espiritual del rebaño del Señor.
+                                    En el año de 2006, con un grupo de 4 jóvenes y 2 niños liderados por nuestro pastor David Segovia, graduado de un seminario bautista se inicio nuestra congregación, con el único objetivo de predicar el evangelio bíblico y que cada creyente conociera a Jesús de una forma personal y sea transformada por el poder del Espíritu Santo, actualmente somos una congregación en de 100 personas entre jóvenes , adultos y niños, y tenemos el enfoque de crecer en el conocimiento de la palabra de Dios, la adoración a través de la obediencia al Señor y el cuido espiritual del rebaño del Señor.
+                                    En el año de 2006, con un grupo de 4 jóvenes y 2 niños liderados por nuestro pastor David Segovia, graduado de un seminario bautista se inicio nuestra congregación, con el único objetivo de predicar el evangelio bíblico y que cada creyente conociera a Jesús de una forma personal y sea transformada por el poder del Espíritu Santo, actualmente somos una congregación en de 100 personas entre jóvenes , adultos y niños, y tenemos el enfoque de crecer en el conocimiento de la palabra de Dios, la adoración a través de la obediencia al Señor y el cuido espiritual del rebaño del Señor.
+                                </p>
+                        </span>
+                        <a id="buttonShow"> Ver Mas...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-sm-2 col-lg-2"></div>
+</div><br />
+
+@*<section class="contenedor sobre-nosotros">
     <a name="Historia"></a>
     <h1 class="titulo">¿Quiénes Somos?</h1>
     <div class="contenedor-sobre-nosotros">
@@ -47,7 +75,7 @@
             </p>
         </div>
     </div>
-</section>
+</section>*@
 <section class="misionvision">
     <div class="caards">
         <div class="caard">
@@ -259,8 +287,30 @@
 
 @section Scripts{
 
-    @*<script>
-            Swal.fire('Good job!', 'SweetAlert2 is On Fire!', 'success');
-        </script>*@
+    <script>
+
+        $(document).ready(function () {
+
+            var i = 0;
+            $("#ReadMore").hide();
+            var element = $("#ReadMore");
+
+            $("#buttonShow").on('click', function (e) {
+                
+                if (!i) {
+                    i = 1;
+                    element.show('slow');
+                    $('#buttonShow').text("Ver Menos")
+                } else {
+                    i = 0;
+                    element.hide('slow');
+                    $('#buttonShow').text("Ver Mas...")
+                }
+
+            });
+
+        });
+
+    </script>
 
 }
