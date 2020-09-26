@@ -411,6 +411,11 @@ h1.titulo {
 }
 
 @media screen and (max-width:900px) {
+        .Fotopastor {
+    width:100%;
+    margin:10px;
+    border-radius:100%;
+} 
 
     .caards {
         flex-direction: column;
@@ -558,4 +563,3 @@ h1.titulo {
   padding: 2px 16px;
 }
 
-    
