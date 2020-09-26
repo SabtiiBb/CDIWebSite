@@ -12,5 +12,25 @@ namespace CDIWebSite.Controllers
         {
             return View();
         }
+
+        public ActionResult JoinUs()
+        {
+            return View();
+        }
+
+        public ActionResult Growth()
+        {
+            return View();
+        }
+
+        public ActionResult Preachings()
+        {
+            return View();
+        }
+
+        public ActionResult Care()
+        {
+            return View();
+        }
     }
 }
