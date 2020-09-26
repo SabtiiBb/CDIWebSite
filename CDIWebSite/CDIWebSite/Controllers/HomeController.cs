@@ -37,5 +37,11 @@ namespace CDIWebSite.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult VideoStream()
+        {
+            return View();
+        }
     }
 }
