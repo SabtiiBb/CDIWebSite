@@ -22,15 +22,7 @@ https://templatemo.com/tm-552-video-catalog
     max-width:100%;
 }
 
-a {
-    transition: all 0.3s ease;
-    color: #666;
-}
 
-a:hover {
-    color: #29BBCC;
-    text-decoration: none;
-}
 
 h2, p { color: #666666; }
 
@@ -314,7 +306,6 @@ div.containertemplate-ph{
     max-width: 382px;
 }
 
-.tm-footer-links > li { margin-bottom: 10px; }
 
 /*Video detail page*/
 
@@ -376,11 +367,6 @@ video, img, iframe {
   height: 100%;
 }
 
-.fa-facebook { color: #3b5998; }
-.fa-twitter { color: #00acee; }
-.fa-pinterest { color: #c8232c; }
-.tm-liked-icon { display: none; }
-.tm-not-liked-icon { display: inline-block; }
 .tm-liked-icon, .tm-not-liked-icon { margin-top: 3px; }
 .tm-liked .tm-liked-icon { display: inline-block; }
 .tm-liked .tm-not-liked-icon { display: none; }

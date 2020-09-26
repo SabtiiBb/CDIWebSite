@@ -4,5 +4,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>VideoStream</h2>
 
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/Stream.css" rel="stylesheet" />
+</head>
+
+<section class="tm-mb-1" id="about">
+    <div class="tm-row tm-about-row">
+        <div class="tm-section-1-l">
+            <img src="~/Content/img/Captura de pantalla 2020-09-26 113634.png" alt="About image" class="tm-img-responsive">
+        </div>
+        <article class="tm-section-1-r tm-bg-color-8">
+            <b class="tm-mb-2 tm-title-color">Nombre de Video</b>
+            <i>Tema de la predica</i>
+            <hr />
+            <b class="tm-mb-2 tm-title-color">Descripción del video</b>
+            <i>Descripción del vídeo</i>
+            <hr />
+            <b class="tm-mb-2 tm-title-color">Predicador</b>
+            <i>Nombre del predicador</i>
+            <hr />
+            <b class="tm-mb-2 tm-title-color">Cita Biblica</b>
+            <i>Cita Bíblica</i>
+        </article>
+    </div>
+</section>
+<div class="tablavideos">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="titulovi">Titulo predica</th>
+                <th class="Descrip">Descripción</th>
+                <th class="irvi"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="titulovi">Titulo predica</td>
+                <td class="Descrip">Descripción</td>
+                <td class="irvi"><a href="/Home/VideoStream"><i class="fas fa-chevron-circle-right"></i></a></td>
+            </tr>
+            <tr>
+                <td class="titulovi">Titulo predica</td>
+                <td class="Descrip">Descripción</td> 
+                <td class="irvi"><a href="/Home/VideoStream"><i class="fas fa-chevron-circle-right"></i></a></td>
+            </tr>
+            <tr>
+                <td class="titulovi">Titulo predica</td>
+                <td class="Descrip">Descripción</td>
+                <td  class="irvi"><a href="/Home/VideoStream"><i class="fas fa-chevron-circle-right"></i></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

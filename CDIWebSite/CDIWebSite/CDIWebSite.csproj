@@ -222,6 +222,7 @@
     <Content Include="Content\img\Sabado.png" />
     <Content Include="Content\img\Viernes.png" />
     <Content Include="Content\Predicaciones.css" />
+    <Content Include="Content\Stream.css" />
     <Content Include="Content\SweetAlert2\sweetalert2.all.js" />
     <Content Include="Content\SweetAlert2\sweetalert2.all.min.js" />
     <Content Include="Content\SweetAlert2\sweetalert2.css" />
