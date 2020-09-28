@@ -474,7 +474,7 @@ h1.titulo {
 
     .card 
     {
-        width: 100%;
+        width: 65%;
         margin: 20px;
         border-radius: 6px;
         overflow: hidden;
@@ -493,7 +493,7 @@ h1.titulo {
     .card img 
     {
         width: 100%;
-        height: 210px;
+        height: 270px;
     }
 
     .card .contenido-card 
