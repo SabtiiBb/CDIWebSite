@@ -12,25 +12,21 @@ namespace CDIWebSite.DataContext
     using System;
     using System.Collections.Generic;
     
-    public partial class Evento
+    public partial class Cupo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Evento()
+        public Cupo()
         {
-            this.Inscripciones = new HashSet<Inscripcione>();
+            this.Eventoes = new HashSet<Evento>();
         }
     
-        public int IdEvento { get; set; }
-        public string NombreEvnto { get; set; }
-        public Nullable<int> IdTipo { get; set; }
-        public Nullable<int> IdCupo { get; set; }
-        public Nullable<int> Fijo { get; set; }
-        public Nullable<System.DateTime> FechaEvento { get; set; }
-        public string Lugar { get; set; }
+        public int IdCupo { get; set; }
+        public int CantCupo { get; set; }
+        public Nullable<int> Disponibles { get; set; }
+        public Nullable<int> EnUso { get; set; }
+        public Nullable<int> StatusOnOff { get; set; }
     
-        public virtual Cupo Cupo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inscripcione> Inscripciones { get; set; }
-        public virtual Tipo Tipo { get; set; }
+        public virtual ICollection<Evento> Eventoes { get; set; }
     }
 }

@@ -12,15 +12,12 @@ namespace CDIWebSite.DataContext
     using System;
     using System.Collections.Generic;
     
-    public partial class Hermano
+    public partial class sysdiagram
     {
-        public int IdHermano { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public Nullable<System.DateTime> FechaNac { get; set; }
-        public Nullable<int> Edad { get; set; }
-        public string Sexo { get; set; }
-        public string Correo { get; set; }
-        public string NContacto { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

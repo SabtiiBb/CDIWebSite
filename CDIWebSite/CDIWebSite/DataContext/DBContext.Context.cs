@@ -13,10 +13,10 @@ namespace CDIWebSite.DataContext
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class masterEntities3 : DbContext
+    public partial class CDIWebSiteToEntities : DbContext
     {
-        public masterEntities3()
-            : base("name=masterEntities3")
+        public CDIWebSiteToEntities()
+            : base("name=CDIWebSiteToEntities")
         {
         }
     
@@ -25,9 +25,11 @@ namespace CDIWebSite.DataContext
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Evento> Evento { get; set; }
-        public virtual DbSet<Hermano> Hermano { get; set; }
-        public virtual DbSet<Inscripciones> Inscripciones { get; set; }
-        public virtual DbSet<Tipo> Tipo { get; set; }
+        public virtual DbSet<Cupo> Cupoes { get; set; }
+        public virtual DbSet<Evento> Eventoes { get; set; }
+        public virtual DbSet<Inscripcione> Inscripciones { get; set; }
+        public virtual DbSet<Persona> Personas { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Tipo> Tipoes { get; set; }
     }
 }

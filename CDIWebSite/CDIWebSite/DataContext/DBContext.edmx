@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CDIWebSiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cupo">
+          <Key>
+            <PropertyRef Name="IdCupo" />
+          </Key>
+          <Property Name="IdCupo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CantCupo" Type="int" Nullable="false" />
+          <Property Name="Disponibles" Type="int" />
+          <Property Name="EnUso" Type="int" />
+          <Property Name="StatusOnOff" Type="int" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="IdEvento" />
+          </Key>
+          <Property Name="IdEvento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEvnto" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="IdTipo" Type="int" />
+          <Property Name="IdCupo" Type="int" />
+          <Property Name="Fijo" Type="int" />
+          <Property Name="FechaEvento" Type="date" />
+          <Property Name="Lugar" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Inscripciones">
+          <Key>
+            <PropertyRef Name="IdInscripciones" />
+          </Key>
+          <Property Name="IdInscripciones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" />
+          <Property Name="IdEvento" Type="int" />
+          <Property Name="Activo" Type="int" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Edad" Type="int" />
+          <Property Name="Sexo" Type="char" MaxLength="1" />
+          <Property Name="NContacto" Type="varchar" MaxLength="20" />
+          <Property Name="FechaNac" Type="date" />
+          <Property Name="Inscrito" Type="int" />
+          <Property Name="FechaRegistro" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+          </Key>
+          <Property Name="IdTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="fk_IdCupo">
+          <End Role="Cupo" Type="Self.Cupo" Multiplicity="0..1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cupo">
+              <PropertyRef Name="IdCupo" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdCupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IdEvento">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="0..1" />
+          <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="IdEvento" />
+            </Principal>
+            <Dependent Role="Inscripciones">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IdPersona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Inscripciones">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IdTipo">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="0..1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="IdTipo" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CDIWebSiteModelStoreContainer">
+          <EntitySet Name="Cupo" EntityType="Self.Cupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inscripciones" EntityType="Self.Inscripciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_IdCupo" Association="Self.fk_IdCupo">
+            <End Role="Cupo" EntitySet="Cupo" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IdEvento" Association="Self.fk_IdEvento">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IdPersona" Association="Self.fk_IdPersona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IdTipo" Association="Self.fk_IdTipo">
+            <End Role="Tipo" EntitySet="Tipo" />
+            <End Role="Evento" EntitySet="Evento" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CDIWebSiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cupo">
+          <Key>
+            <PropertyRef Name="IdCupo" />
+          </Key>
+          <Property Name="IdCupo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CantCupo" Type="Int32" Nullable="false" />
+          <Property Name="Disponibles" Type="Int32" />
+          <Property Name="EnUso" Type="Int32" />
+          <Property Name="StatusOnOff" Type="Int32" />
+          <NavigationProperty Name="Eventoes" Relationship="Self.fk_IdCupo" FromRole="Cupo" ToRole="Evento" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="IdEvento" />
+          </Key>
+          <Property Name="IdEvento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEvnto" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdTipo" Type="Int32" />
+          <Property Name="IdCupo" Type="Int32" />
+          <Property Name="Fijo" Type="Int32" />
+          <Property Name="FechaEvento" Type="DateTime" Precision="0" />
+          <Property Name="Lugar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cupo" Relationship="Self.fk_IdCupo" FromRole="Evento" ToRole="Cupo" />
+          <NavigationProperty Name="Inscripciones" Relationship="Self.fk_IdEvento" FromRole="Evento" ToRole="Inscripciones" />
+          <NavigationProperty Name="Tipo" Relationship="Self.fk_IdTipo" FromRole="Evento" ToRole="Tipo" />
+        </EntityType>
+        <EntityType Name="Inscripcione">
+          <Key>
+            <PropertyRef Name="IdInscripciones" />
+          </Key>
+          <Property Name="IdInscripciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" />
+          <Property Name="IdEvento" Type="Int32" />
+          <Property Name="Activo" Type="Int32" />
+          <NavigationProperty Name="Evento" Relationship="Self.fk_IdEvento" FromRole="Inscripciones" ToRole="Evento" />
+          <NavigationProperty Name="Persona" Relationship="Self.fk_IdPersona" FromRole="Inscripciones" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Edad" Type="Int32" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="NContacto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNac" Type="DateTime" Precision="0" />
+          <Property Name="Inscrito" Type="Int32" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Inscripciones" Relationship="Self.fk_IdPersona" FromRole="Persona" ToRole="Inscripciones" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+          </Key>
+          <Property Name="IdTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Eventoes" Relationship="Self.fk_IdTipo" FromRole="Tipo" ToRole="Evento" />
+        </EntityType>
+        <Association Name="fk_IdCupo">
+          <End Role="Cupo" Type="Self.Cupo" Multiplicity="0..1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cupo">
+              <PropertyRef Name="IdCupo" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdCupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IdEvento">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="0..1" />
+          <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="IdEvento" />
+            </Principal>
+            <Dependent Role="Inscripciones">
+              <PropertyRef Name="IdEvento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IdTipo">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="0..1" />
+          <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="IdTipo" />
+            </Principal>
+            <Dependent Role="Evento">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_IdPersona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="Inscripciones">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CDIWebSiteToEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cupoes" EntityType="Self.Cupo" />
+          <EntitySet Name="Eventoes" EntityType="Self.Evento" />
+          <EntitySet Name="Inscripciones" EntityType="Self.Inscripcione" />
+          <EntitySet Name="Personas" EntityType="Self.Persona" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tipoes" EntityType="Self.Tipo" />
+          <AssociationSet Name="fk_IdCupo" Association="Self.fk_IdCupo">
+            <End Role="Cupo" EntitySet="Cupoes" />
+            <End Role="Evento" EntitySet="Eventoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IdEvento" Association="Self.fk_IdEvento">
+            <End Role="Evento" EntitySet="Eventoes" />
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IdTipo" Association="Self.fk_IdTipo">
+            <End Role="Tipo" EntitySet="Tipoes" />
+            <End Role="Evento" EntitySet="Eventoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IdPersona" Association="Self.fk_IdPersona">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CDIWebSiteModelStoreContainer" CdmEntityContainer="CDIWebSiteToEntities">
+          <EntitySetMapping Name="Cupoes">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.Cupo">
+              <MappingFragment StoreEntitySet="Cupo">
+                <ScalarProperty Name="IdCupo" ColumnName="IdCupo" />
+                <ScalarProperty Name="CantCupo" ColumnName="CantCupo" />
+                <ScalarProperty Name="Disponibles" ColumnName="Disponibles" />
+                <ScalarProperty Name="EnUso" ColumnName="EnUso" />
+                <ScalarProperty Name="StatusOnOff" ColumnName="StatusOnOff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventoes">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.Evento">
+              <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
+                <ScalarProperty Name="NombreEvnto" ColumnName="NombreEvnto" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="IdCupo" ColumnName="IdCupo" />
+                <ScalarProperty Name="Fijo" ColumnName="Fijo" />
+                <ScalarProperty Name="FechaEvento" ColumnName="FechaEvento" />
+                <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inscripciones">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.Inscripcione">
+              <MappingFragment StoreEntitySet="Inscripciones">
+                <ScalarProperty Name="IdInscripciones" ColumnName="IdInscripciones" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="NContacto" ColumnName="NContacto" />
+                <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+                <ScalarProperty Name="Inscrito" ColumnName="Inscrito" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipoes">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.Tipo">
+              <MappingFragment StoreEntitySet="Tipo">
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

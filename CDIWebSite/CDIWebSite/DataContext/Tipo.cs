@@ -14,7 +14,16 @@ namespace CDIWebSite.DataContext
     
     public partial class Tipo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tipo()
+        {
+            this.Eventoes = new HashSet<Evento>();
+        }
+    
         public int IdTipo { get; set; }
         public string Nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Evento> Eventoes { get; set; }
     }
 }

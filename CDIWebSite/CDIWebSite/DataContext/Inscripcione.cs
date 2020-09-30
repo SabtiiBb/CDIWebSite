@@ -12,11 +12,14 @@ namespace CDIWebSite.DataContext
     using System;
     using System.Collections.Generic;
     
-    public partial class Inscripciones
+    public partial class Inscripcione
     {
         public int IdInscripciones { get; set; }
-        public Nullable<int> IdHermano { get; set; }
+        public Nullable<int> IdPersona { get; set; }
         public Nullable<int> IdEvento { get; set; }
         public Nullable<int> Activo { get; set; }
+    
+        public virtual Evento Evento { get; set; }
+        public virtual Persona Persona { get; set; }
     }
 }

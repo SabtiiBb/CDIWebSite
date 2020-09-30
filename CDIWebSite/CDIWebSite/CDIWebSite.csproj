@@ -161,32 +161,38 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DataContext\ContextDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ContextDB.Context.tt</DependentUpon>
+    <Compile Include="DataContext\Cupo.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataContext\ContextDB.cs">
+    <Compile Include="DataContext\DBContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ContextDB.tt</DependentUpon>
+      <DependentUpon>DBContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataContext\ContextDB.Designer.cs">
+    <Compile Include="DataContext\DBContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ContextDB.edmx</DependentUpon>
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\DBContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBContext.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataContext\Evento.cs">
-      <DependentUpon>ContextDB.tt</DependentUpon>
+      <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataContext\Hermano.cs">
-      <DependentUpon>ContextDB.tt</DependentUpon>
+    <Compile Include="DataContext\Inscripcione.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataContext\Inscripciones.cs">
-      <DependentUpon>ContextDB.tt</DependentUpon>
+    <Compile Include="DataContext\Persona.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\sysdiagram.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="DataContext\Tipo.cs">
-      <DependentUpon>ContextDB.tt</DependentUpon>
+      <DependentUpon>DBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -233,15 +239,15 @@
     <Content Include="Content\SweetAlert2\sweetalert2.js" />
     <Content Include="Content\SweetAlert2\sweetalert2.min.css" />
     <Content Include="Content\SweetAlert2\sweetalert2.min.js" />
-    <Content Include="DataContext\ContextDB.Context.tt">
+    <Content Include="DataContext\DBContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ContextDB.edmx</DependentUpon>
-      <LastGenOutput>ContextDB.Context.cs</LastGenOutput>
+      <DependentUpon>DBContext.edmx</DependentUpon>
+      <LastGenOutput>DBContext.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DataContext\ContextDB.tt">
+    <Content Include="DataContext\DBContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ContextDB.edmx</DependentUpon>
-      <LastGenOutput>ContextDB.cs</LastGenOutput>
+      <DependentUpon>DBContext.edmx</DependentUpon>
+      <LastGenOutput>DBContext.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -277,12 +283,12 @@
     <Content Include="Content\SweetAlert2\LICENSE" />
     <Content Include="Content\SweetAlert2\package.json" />
     <Content Include="Content\SweetAlert2\README.md" />
-    <EntityDeploy Include="DataContext\ContextDB.edmx">
+    <EntityDeploy Include="DataContext\DBContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ContextDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DataContext\ContextDB.edmx.diagram">
-      <DependentUpon>ContextDB.edmx</DependentUpon>
+    <Content Include="DataContext\DBContext.edmx.diagram">
+      <DependentUpon>DBContext.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\CDIWebSite.pubxml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
