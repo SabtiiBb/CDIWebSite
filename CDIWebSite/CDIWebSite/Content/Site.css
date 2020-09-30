@@ -455,7 +455,7 @@ h1.titulo {
 
     .container-card 
     {
-        width: 100%;
+        width: auto;
         display: flex;
         max-width: 1100px;
         margin: auto;
@@ -467,15 +467,15 @@ h1.titulo {
         max-width: 1080px;
         margin: auto;
         padding: 20px;
-        margin-top: 20px;
+        margin-top: 50px;
         text-align: center;
         color: #7a7a7a;
     }
 
-    .card 
+    div.card 
     {
-        width: 65%;
-        margin: 20px;
+        width: 60%;
+        margin: 10px;
         border-radius: 6px;
         overflow: hidden;
         background: #fff;
@@ -520,7 +520,7 @@ h1.titulo {
     {
         display: inline-block;
         padding: 10px;
-        margin-top: 10px;
+        margin-top: 30px;
         text-decoration: none;
         color: #2fb4cc;
         border: 1px solid #2fb4cc;
@@ -543,7 +543,7 @@ h1.titulo {
 
     .card 
     {
-        margin: 10px;
+        margin: 50px;
     }
 }
 /*Fin-Cards*/
