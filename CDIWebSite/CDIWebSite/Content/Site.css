@@ -475,7 +475,7 @@ h1.titulo {
     div.card 
     {
         width: 60%;
-        margin: 10px;
+        margin: auto;
         border-radius: 6px;
         overflow: hidden;
         background: #fff;
@@ -538,12 +538,12 @@ h1.titulo {
     @media only screen and (min-width: 320px) and (max-width: 768px) {
     .container-card 
     {
-        flex-wrap: wrap;
+        flex-wrap: wrap-reverse;
     }
 
     .card 
     {
-        margin: 50px;
+        margin:initial;
     }
 }
 /*Fin-Cards*/
