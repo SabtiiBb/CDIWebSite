@@ -12,26 +12,19 @@ namespace CDIWebSite.DataContext
     using System;
     using System.Collections.Generic;
     
-    public partial class Evento
+    public partial class ImageSection
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Evento()
+        public ImageSection()
         {
-            this.Inscripciones = new HashSet<Inscripcione>();
+            this.Images = new HashSet<Image>();
         }
     
-        public int IdEvento { get; set; }
-        public string NombreEvnto { get; set; }
-        public Nullable<int> IdTipo { get; set; }
-        public Nullable<int> IdCupo { get; set; }
-        public Nullable<int> Fijo { get; set; }
-        public Nullable<System.DateTime> FechaEvento { get; set; }
-        public string Lugar { get; set; }
-        public string Descripcion { get; set; }
+        public int IdImageSection { get; set; }
+        public string SectionName { get; set; }
+        public string SectionDescription { get; set; }
     
-        public virtual Cupo Cupo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inscripcione> Inscripciones { get; set; }
-        public virtual Tipo Tipo { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
     }
 }
