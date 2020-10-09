@@ -27,6 +27,7 @@
           <Property Name="FechaEvento" Type="date" />
           <Property Name="Lugar" Type="varchar" MaxLength="200" />
           <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="FotoEvento" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -226,6 +227,7 @@
           <NavigationProperty Name="Cupo" Relationship="Self.fk_IdCupo" FromRole="Evento" ToRole="Cupo" />
           <NavigationProperty Name="Inscripciones" Relationship="Self.fk_IdEvento" FromRole="Evento" ToRole="Inscripciones" />
           <NavigationProperty Name="Tipo" Relationship="Self.fk_IdTipo" FromRole="Evento" ToRole="Tipo" />
+          <Property Name="FotoEvento" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -421,6 +423,7 @@
           <EntitySetMapping Name="Eventoes">
             <EntityTypeMapping TypeName="CDIWebSiteModel.Evento">
               <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="FotoEvento" ColumnName="FotoEvento" />
                 <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
                 <ScalarProperty Name="NombreEvnto" ColumnName="NombreEvnto" />
                 <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
