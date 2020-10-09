@@ -207,6 +207,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Growth.css" />
     <Content Include="Content\img\103728533_583220682623459_9215873224258469045_o.jpg" />
     <Content Include="Content\img\108205147_602784134000447_5158800697711434897_o %281%29.jpg" />
     <Content Include="Content\img\108205147_602784134000447_5158800697711434897_o.jpg" />
@@ -231,6 +232,7 @@
     <Content Include="Content\img\Martes.png" />
     <Content Include="Content\img\Miercoles.png" />
     <Content Include="Content\img\mobil-logo.png" />
+    <Content Include="Content\img\pexels-kim-stiver-603473.jpg" />
     <Content Include="Content\img\Sabado.png" />
     <Content Include="Content\img\Viernes.png" />
     <Content Include="Content\Predicaciones.css" />

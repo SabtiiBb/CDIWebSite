@@ -11,7 +11,7 @@
 }
 
 .navbar img.desktop-logo{
-    width:25%;
+    width:5%;
 }
 
 .navbar img.mobil-logo{
@@ -178,7 +178,7 @@ div.collapse ul{
 
 .caards .caard>.contenido-texto-caard {
     width: 80%;
-    color: rgb(0, 0, 0);
+    color:black;
 }
 
 .caards .caard>.contenido-texto-caard h3 {
@@ -248,7 +248,7 @@ div.collapse ul{
     }
 
 .caards .caard>.contenido-texto-caard p {
-    font-weight: 300;
+    font-weight: 500;
     padding-top: 5px;
 }
 
@@ -362,6 +362,8 @@ h1.titulo {
     text-align: justify;    
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+
 
 
 @media screen and (max-width:700px) {
