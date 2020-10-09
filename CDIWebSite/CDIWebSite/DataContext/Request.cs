@@ -12,12 +12,14 @@ namespace CDIWebSite.DataContext
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class Request
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int IdRequest { get; set; }
+        public string Solicitante { get; set; }
+        public string Destinatario { get; set; }
+        public string Comentario { get; set; }
+        public string Contacto { get; set; }
+        public string Email { get; set; }
+        public Nullable<int> Activo { get; set; }
     }
 }

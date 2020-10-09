@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CDIWebSiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CDIWebSiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cupo">
           <Key>
             <PropertyRef Name="IdCupo" />
@@ -26,6 +26,23 @@
           <Property Name="Fijo" Type="int" />
           <Property Name="FechaEvento" Type="date" />
           <Property Name="Lugar" Type="varchar" MaxLength="200" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="IdImage" />
+          </Key>
+          <Property Name="IdImage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdImageSection" Type="int" />
+          <Property Name="ImgSource" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ImageSection">
+          <Key>
+            <PropertyRef Name="IdImageSection" />
+          </Key>
+          <Property Name="IdImageSection" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SectionName" Type="varchar" MaxLength="50" />
+          <Property Name="SectionDescription" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Inscripciones">
           <Key>
@@ -35,6 +52,23 @@
           <Property Name="IdPersona" Type="int" />
           <Property Name="IdEvento" Type="int" />
           <Property Name="Activo" Type="int" />
+        </EntityType>
+        <EntityType Name="Ministerio">
+          <Key>
+            <PropertyRef Name="IdMinisterio" />
+          </Key>
+          <Property Name="IdMinisterio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreMinisterio" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="FotoMinisterio" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="NetUser">
+          <Key>
+            <PropertyRef Name="IdNetUser" />
+          </Key>
+          <Property Name="IdNetUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="PassWordHash" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
@@ -51,15 +85,17 @@
           <Property Name="Inscrito" Type="int" />
           <Property Name="FechaRegistro" Type="date" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="Requests">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="IdRequest" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="IdRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Solicitante" Type="varchar" MaxLength="75" />
+          <Property Name="Destinatario" Type="varchar" MaxLength="75" />
+          <Property Name="Comentario" Type="varchar(max)" />
+          <Property Name="Contacto" Type="varchar" MaxLength="21" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Activo" Type="int" />
         </EntityType>
         <EntityType Name="Tipo">
           <Key>
@@ -92,6 +128,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_IdImageSection">
+          <End Role="ImageSection" Type="Self.ImageSection" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImageSection">
+              <PropertyRef Name="IdImageSection" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="IdImageSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_IdPersona">
           <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
           <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="*" />
@@ -119,9 +167,13 @@
         <EntityContainer Name="CDIWebSiteModelStoreContainer">
           <EntitySet Name="Cupo" EntityType="Self.Cupo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageSection" EntityType="Self.ImageSection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inscripciones" EntityType="Self.Inscripciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ministerio" EntityType="Self.Ministerio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NetUser" EntityType="Self.NetUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_IdCupo" Association="Self.fk_IdCupo">
             <End Role="Cupo" EntitySet="Cupo" />
@@ -130,6 +182,10 @@
           <AssociationSet Name="fk_IdEvento" Association="Self.fk_IdEvento">
             <End Role="Evento" EntitySet="Evento" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_IdImageSection" Association="Self.fk_IdImageSection">
+            <End Role="ImageSection" EntitySet="ImageSection" />
+            <End Role="Images" EntitySet="Images" />
           </AssociationSet>
           <AssociationSet Name="fk_IdPersona" Association="Self.fk_IdPersona">
             <End Role="Persona" EntitySet="Persona" />
@@ -140,8 +196,7 @@
             <End Role="Evento" EntitySet="Evento" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CDIWebSiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -167,9 +222,28 @@
           <Property Name="Fijo" Type="Int32" />
           <Property Name="FechaEvento" Type="DateTime" Precision="0" />
           <Property Name="Lugar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Cupo" Relationship="Self.fk_IdCupo" FromRole="Evento" ToRole="Cupo" />
           <NavigationProperty Name="Inscripciones" Relationship="Self.fk_IdEvento" FromRole="Evento" ToRole="Inscripciones" />
           <NavigationProperty Name="Tipo" Relationship="Self.fk_IdTipo" FromRole="Evento" ToRole="Tipo" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="IdImage" />
+          </Key>
+          <Property Name="IdImage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdImageSection" Type="Int32" />
+          <Property Name="ImgSource" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ImageSection" Relationship="Self.fk_IdImageSection" FromRole="Images" ToRole="ImageSection" />
+        </EntityType>
+        <EntityType Name="ImageSection">
+          <Key>
+            <PropertyRef Name="IdImageSection" />
+          </Key>
+          <Property Name="IdImageSection" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SectionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SectionDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Images" Relationship="Self.fk_IdImageSection" FromRole="ImageSection" ToRole="Images" />
         </EntityType>
         <EntityType Name="Inscripcione">
           <Key>
@@ -181,6 +255,23 @@
           <Property Name="Activo" Type="Int32" />
           <NavigationProperty Name="Evento" Relationship="Self.fk_IdEvento" FromRole="Inscripciones" ToRole="Evento" />
           <NavigationProperty Name="Persona" Relationship="Self.fk_IdPersona" FromRole="Inscripciones" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Ministerio">
+          <Key>
+            <PropertyRef Name="IdMinisterio" />
+          </Key>
+          <Property Name="IdMinisterio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreMinisterio" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FotoMinisterio" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NetUser">
+          <Key>
+            <PropertyRef Name="IdNetUser" />
+          </Key>
+          <Property Name="IdNetUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassWordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
@@ -197,16 +288,6 @@
           <Property Name="Inscrito" Type="Int32" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Inscripciones" Relationship="Self.fk_IdPersona" FromRole="Persona" ToRole="Inscripciones" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Tipo">
           <Key>
@@ -252,6 +333,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_IdImageSection">
+          <End Role="ImageSection" Type="Self.ImageSection" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImageSection">
+              <PropertyRef Name="IdImageSection" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="IdImageSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_IdPersona">
           <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
           <End Role="Inscripciones" Type="Self.Inscripcione" Multiplicity="*" />
@@ -264,12 +357,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CDIWebSiteToEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CDIWebSiteToEntitiesDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cupoes" EntityType="Self.Cupo" />
           <EntitySet Name="Eventoes" EntityType="Self.Evento" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="ImageSections" EntityType="Self.ImageSection" />
           <EntitySet Name="Inscripciones" EntityType="Self.Inscripcione" />
+          <EntitySet Name="Ministerios" EntityType="Self.Ministerio" />
+          <EntitySet Name="NetUsers" EntityType="Self.NetUser" />
           <EntitySet Name="Personas" EntityType="Self.Persona" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Tipoes" EntityType="Self.Tipo" />
           <AssociationSet Name="fk_IdCupo" Association="Self.fk_IdCupo">
             <End Role="Cupo" EntitySet="Cupoes" />
@@ -283,17 +379,34 @@
             <End Role="Tipo" EntitySet="Tipoes" />
             <End Role="Evento" EntitySet="Eventoes" />
           </AssociationSet>
+          <AssociationSet Name="fk_IdImageSection" Association="Self.fk_IdImageSection">
+            <End Role="ImageSection" EntitySet="ImageSections" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
           <AssociationSet Name="fk_IdPersona" Association="Self.fk_IdPersona">
             <End Role="Persona" EntitySet="Personas" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
+          <EntitySet Name="Requests" EntityType="CDIWebSiteModel.Request" />
         </EntityContainer>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="IdRequest" />
+          </Key>
+          <Property Name="IdRequest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Solicitante" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="Destinatario" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Contacto" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CDIWebSiteModelStoreContainer" CdmEntityContainer="CDIWebSiteToEntities">
+        <EntityContainerMapping StorageEntityContainer="CDIWebSiteModelStoreContainer" CdmEntityContainer="CDIWebSiteToEntitiesDB">
           <EntitySetMapping Name="Cupoes">
             <EntityTypeMapping TypeName="CDIWebSiteModel.Cupo">
               <MappingFragment StoreEntitySet="Cupo">
@@ -315,6 +428,25 @@
                 <ScalarProperty Name="Fijo" ColumnName="Fijo" />
                 <ScalarProperty Name="FechaEvento" ColumnName="FechaEvento" />
                 <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="IdImage" ColumnName="IdImage" />
+                <ScalarProperty Name="IdImageSection" ColumnName="IdImageSection" />
+                <ScalarProperty Name="ImgSource" ColumnName="ImgSource" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageSections">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.ImageSection">
+              <MappingFragment StoreEntitySet="ImageSection">
+                <ScalarProperty Name="IdImageSection" ColumnName="IdImageSection" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="SectionDescription" ColumnName="SectionDescription" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -325,6 +457,25 @@
                 <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
                 <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ministerios">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.Ministerio">
+              <MappingFragment StoreEntitySet="Ministerio">
+                <ScalarProperty Name="IdMinisterio" ColumnName="IdMinisterio" />
+                <ScalarProperty Name="NombreMinisterio" ColumnName="NombreMinisterio" />
+                <ScalarProperty Name="FotoMinisterio" ColumnName="FotoMinisterio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NetUsers">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.NetUser">
+              <MappingFragment StoreEntitySet="NetUser">
+                <ScalarProperty Name="IdNetUser" ColumnName="IdNetUser" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWordHash" ColumnName="PassWordHash" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -344,22 +495,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="CDIWebSiteModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tipoes">
             <EntityTypeMapping TypeName="CDIWebSiteModel.Tipo">
               <MappingFragment StoreEntitySet="Tipo">
                 <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.Request">
+              <MappingFragment StoreEntitySet="Requests">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
+                <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+                <ScalarProperty Name="IdRequest" ColumnName="IdRequest" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

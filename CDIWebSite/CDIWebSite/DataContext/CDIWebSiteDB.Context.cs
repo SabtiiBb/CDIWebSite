@@ -13,10 +13,10 @@ namespace CDIWebSite.DataContext
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CDIWebSiteToEntities : DbContext
+    public partial class CDIWebSiteToEntitiesDB : DbContext
     {
-        public CDIWebSiteToEntities()
-            : base("name=CDIWebSiteToEntities")
+        public CDIWebSiteToEntitiesDB()
+            : base("name=CDIWebSiteToEntitiesDB")
         {
         }
     
@@ -27,9 +27,13 @@ namespace CDIWebSite.DataContext
     
         public virtual DbSet<Cupo> Cupoes { get; set; }
         public virtual DbSet<Evento> Eventoes { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<ImageSection> ImageSections { get; set; }
         public virtual DbSet<Inscripcione> Inscripciones { get; set; }
+        public virtual DbSet<Ministerio> Ministerios { get; set; }
+        public virtual DbSet<NetUser> NetUsers { get; set; }
         public virtual DbSet<Persona> Personas { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tipo> Tipoes { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
     }
 }

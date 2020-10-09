@@ -161,38 +161,50 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DataContext\CDIWebSiteDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CDIWebSiteDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\CDIWebSiteDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\CDIWebSiteDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CDIWebSiteDB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="DataContext\Cupo.cs">
-      <DependentUpon>DBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\DBContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\DBContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataContext\DBContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBContext.edmx</DependentUpon>
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataContext\Evento.cs">
-      <DependentUpon>DBContext.tt</DependentUpon>
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Image.cs">
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\ImageSection.cs">
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataContext\Inscripcione.cs">
-      <DependentUpon>DBContext.tt</DependentUpon>
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\Ministerio.cs">
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContext\NetUser.cs">
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataContext\Persona.cs">
-      <DependentUpon>DBContext.tt</DependentUpon>
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataContext\sysdiagram.cs">
-      <DependentUpon>DBContext.tt</DependentUpon>
+    <Compile Include="DataContext\Request.cs">
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataContext\Tipo.cs">
-      <DependentUpon>DBContext.tt</DependentUpon>
+      <DependentUpon>CDIWebSiteDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -243,15 +255,15 @@
     <Content Include="Content\SweetAlert2\sweetalert2.js" />
     <Content Include="Content\SweetAlert2\sweetalert2.min.css" />
     <Content Include="Content\SweetAlert2\sweetalert2.min.js" />
-    <Content Include="DataContext\DBContext.Context.tt">
+    <Content Include="DataContext\CDIWebSiteDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBContext.edmx</DependentUpon>
-      <LastGenOutput>DBContext.Context.cs</LastGenOutput>
+      <DependentUpon>CDIWebSiteDB.edmx</DependentUpon>
+      <LastGenOutput>CDIWebSiteDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DataContext\DBContext.tt">
+    <Content Include="DataContext\CDIWebSiteDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBContext.edmx</DependentUpon>
-      <LastGenOutput>DBContext.cs</LastGenOutput>
+      <DependentUpon>CDIWebSiteDB.edmx</DependentUpon>
+      <LastGenOutput>CDIWebSiteDB.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -287,12 +299,12 @@
     <Content Include="Content\SweetAlert2\LICENSE" />
     <Content Include="Content\SweetAlert2\package.json" />
     <Content Include="Content\SweetAlert2\README.md" />
-    <EntityDeploy Include="DataContext\DBContext.edmx">
+    <EntityDeploy Include="DataContext\CDIWebSiteDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBContext.Designer.cs</LastGenOutput>
+      <LastGenOutput>CDIWebSiteDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DataContext\DBContext.edmx.diagram">
-      <DependentUpon>DBContext.edmx</DependentUpon>
+    <Content Include="DataContext\CDIWebSiteDB.edmx.diagram">
+      <DependentUpon>CDIWebSiteDB.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\CDIWebSite.pubxml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
