@@ -12,29 +12,6 @@ namespace CDIWebSite.Services
     {
         CDIWebSiteToEntitiesDB db = new CDIWebSiteToEntitiesDB();
 
-        //------------------------------------------ FUNCTIONS ------------------------------------------
-
-        public InscriptionsVM addPersona(InscriptionsVM p)
-        {
-            Persona h = new Persona();
-            h.Nombre = p.Nombre;
-            h.Apellido = p.Apellido;
-            h.Correo = p.Correo;
-            h.Edad = p.Edad;
-            h.FechaNac = p.FechaNac;
-            h.FechaRegistro = DateTime.Now;
-            h.Sexo = p.Sexo;
-            h.NContacto = p.NContacto;
-
-            db.Personas.Add(h);
-            db.SaveChanges();
-
-            var last = db.Personas.OrderByDescending(x => x.IdPersona).First();
-            p.IdPersona = last.IdPersona;
-
-            return p;
-        }
-
         public void addInscription(InscriptionsVM model)
         {
             Inscripcione Inscription = new Inscripcione();
@@ -56,6 +33,29 @@ namespace CDIWebSite.Services
             inscr.Activo = 1;
             db.Inscripciones.Add(inscr);
             db.SaveChanges();
+        }
+
+        //------------------------------------------ FUNCTIONS ------------------------------------------
+
+        public InscriptionsVM addPersona(InscriptionsVM p)
+        {
+            Persona h = new Persona();
+            h.Nombre = p.Nombre;
+            h.Apellido = p.Apellido;
+            h.Correo = p.Correo;
+            h.Edad = p.Edad;
+            h.FechaNac = p.FechaNac;
+            h.FechaRegistro = DateTime.Now;
+            h.Sexo = p.Sexo;
+            h.NContacto = p.NContacto;
+
+            db.Personas.Add(h);
+            db.SaveChanges();
+
+            var last = db.Personas.OrderByDescending(x => x.IdPersona).First();
+            p.IdPersona = last.IdPersona;
+
+            return p;
         }
 
         public bool verifyIfExistMail(string correo)
