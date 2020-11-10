@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.Web.Mvc;
 
 namespace CDIWebSite.Services
 {
@@ -96,5 +97,26 @@ namespace CDIWebSite.Services
 
             return false;
         }
+
+        public List<SelectListItem> Gender()
+        {
+            List<SelectListItem> ListaGenero = new List<SelectListItem>();
+            ListaGenero.Add(new SelectListItem { Text = "Femenino", Value = "F" });
+            ListaGenero.Add(new SelectListItem { Text = "Masculino", Value = "M" });
+
+            return ListaGenero;
+        }
+
+        public List<SelectListItem> Edades()
+        {
+            List<SelectListItem> ListEdades = new List<SelectListItem>();
+            for(var s = 15; s<100; s++)
+            {
+                ListEdades.Add(new SelectListItem { Text = s + " años", Value = s.ToString() });
+            }
+
+            return ListEdades;
+        }
+
     }
 }

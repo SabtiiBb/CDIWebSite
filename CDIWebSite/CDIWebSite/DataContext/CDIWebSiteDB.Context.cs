@@ -35,5 +35,6 @@ namespace CDIWebSite.DataContext
         public virtual DbSet<Persona> Personas { get; set; }
         public virtual DbSet<Tipo> Tipoes { get; set; }
         public virtual DbSet<Request> Requests { get; set; }
+        public virtual DbSet<VideoStream> VideoStreams { get; set; }
     }
 }

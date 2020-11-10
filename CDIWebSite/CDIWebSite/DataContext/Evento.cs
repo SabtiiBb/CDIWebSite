@@ -29,6 +29,7 @@ namespace CDIWebSite.DataContext
         public string Lugar { get; set; }
         public string Descripcion { get; set; }
         public byte[] FotoEvento { get; set; }
+        public Nullable<int> Activo { get; set; }
     
         public virtual Cupo Cupo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

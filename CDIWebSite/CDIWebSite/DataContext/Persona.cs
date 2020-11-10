@@ -30,6 +30,7 @@ namespace CDIWebSite.DataContext
         public Nullable<System.DateTime> FechaNac { get; set; }
         public Nullable<int> Inscrito { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
+        public Nullable<int> Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inscripcione> Inscripciones { get; set; }

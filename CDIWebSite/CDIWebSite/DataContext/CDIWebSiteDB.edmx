@@ -28,6 +28,7 @@
           <Property Name="Lugar" Type="varchar" MaxLength="200" />
           <Property Name="Descripcion" Type="varchar(max)" />
           <Property Name="FotoEvento" Type="varbinary(max)" />
+          <Property Name="Activo" Type="int" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -60,7 +61,7 @@
           </Key>
           <Property Name="IdMinisterio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreMinisterio" Type="varchar" MaxLength="75" Nullable="false" />
-          <Property Name="FotoMinisterio" Type="varbinary(max)" Nullable="false" />
+          <Property Name="FotoMinisterio" Type="varbinary(max)" />
           <Property Name="Descripcion" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="NetUser">
@@ -84,6 +85,7 @@
           <Property Name="NContacto" Type="varchar" MaxLength="20" />
           <Property Name="FechaNac" Type="date" />
           <Property Name="Inscrito" Type="int" />
+          <Property Name="Activo" Type="int" />
           <Property Name="FechaRegistro" Type="date" />
         </EntityType>
         <EntityType Name="Requests">
@@ -104,6 +106,18 @@
           </Key>
           <Property Name="IdTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="VideoStream">
+          <Key>
+            <PropertyRef Name="IdVideo" />
+          </Key>
+          <Property Name="IdVideo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="75" />
+          <Property Name="Predicador" Type="varchar" MaxLength="100" />
+          <Property Name="Citas" Type="varchar" MaxLength="75" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="300" />
+          <Property Name="iFrameSection" Type="varchar(max)" Nullable="false" />
+          <Property Name="Activo" Type="int" />
         </EntityType>
         <Association Name="fk_IdCupo">
           <End Role="Cupo" Type="Self.Cupo" Multiplicity="0..1" />
@@ -176,6 +190,7 @@
           <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoStream" EntityType="Self.VideoStream" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_IdCupo" Association="Self.fk_IdCupo">
             <End Role="Cupo" EntitySet="Cupo" />
             <End Role="Evento" EntitySet="Evento" />
@@ -228,6 +243,7 @@
           <NavigationProperty Name="Inscripciones" Relationship="Self.fk_IdEvento" FromRole="Evento" ToRole="Inscripciones" />
           <NavigationProperty Name="Tipo" Relationship="Self.fk_IdTipo" FromRole="Evento" ToRole="Tipo" />
           <Property Name="FotoEvento" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Activo" Type="Int32" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -264,7 +280,7 @@
           </Key>
           <Property Name="IdMinisterio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreMinisterio" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FotoMinisterio" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="FotoMinisterio" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="NetUser">
@@ -290,6 +306,7 @@
           <Property Name="Inscrito" Type="Int32" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Inscripciones" Relationship="Self.fk_IdPersona" FromRole="Persona" ToRole="Inscripciones" />
+          <Property Name="Activo" Type="Int32" />
         </EntityType>
         <EntityType Name="Tipo">
           <Key>
@@ -390,6 +407,7 @@
             <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
           <EntitySet Name="Requests" EntityType="CDIWebSiteModel.Request" />
+          <EntitySet Name="VideoStreams" EntityType="CDIWebSiteModel.VideoStream" />
         </EntityContainer>
         <EntityType Name="Request">
           <Key>
@@ -402,6 +420,18 @@
           <Property Name="Contacto" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VideoStream">
+          <Key>
+            <PropertyRef Name="IdVideo" />
+          </Key>
+          <Property Name="IdVideo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="Citas" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="iFrameSection" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Int32" />
+          <Property Name="Predicador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -423,6 +453,7 @@
           <EntitySetMapping Name="Eventoes">
             <EntityTypeMapping TypeName="CDIWebSiteModel.Evento">
               <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="FotoEvento" ColumnName="FotoEvento" />
                 <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
                 <ScalarProperty Name="NombreEvnto" ColumnName="NombreEvnto" />
@@ -485,6 +516,7 @@
           <EntitySetMapping Name="Personas">
             <EntityTypeMapping TypeName="CDIWebSiteModel.Persona">
               <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Apellido" ColumnName="Apellido" />
@@ -516,6 +548,19 @@
                 <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
                 <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
                 <ScalarProperty Name="IdRequest" ColumnName="IdRequest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoStreams">
+            <EntityTypeMapping TypeName="CDIWebSiteModel.VideoStream">
+              <MappingFragment StoreEntitySet="VideoStream">
+                <ScalarProperty Name="Predicador" ColumnName="Predicador" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="iFrameSection" ColumnName="iFrameSection" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Citas" ColumnName="Citas" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="IdVideo" ColumnName="IdVideo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

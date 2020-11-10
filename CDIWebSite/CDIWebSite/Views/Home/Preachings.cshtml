@@ -1,4 +1,4 @@
-﻿
+﻿@model CDIWebSite.Models.PreachingsVM
 @{
     ViewBag.Title = "Predicaciones";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,145 +38,35 @@
             <div id="content" class="mx-auto tm-content-container">
                 <main>
                     <div class="row tm-catalog-item-list">
-                        <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
-                            <div class="position-relative tm-thumbnail-container">
-                                <img src="~/Content/img/influencer-grabando-nuevo-video_23-2148522553.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="/Home/VideoStream" class="position-absolute tm-img-overlay">
-                                    <i class="fas fa-play tm-overlay-icon"></i>
-                                </a>
+                        @foreach (var mod in Model.VidList)
+                        {
+                            <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
+                                <div class="position-relative tm-thumbnail-container">
+                                    <img src="~/Content/img/influencer-grabando-nuevo-video_23-2148522553.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
+                                    <a href="/Home/VideoStream?@mod.IdVideo" class="position-absolute tm-img-overlay">
+                                        <i class="fas fa-play tm-overlay-icon"></i>
+                                    </a>
+                                </div>
+                                <div class="p-4 tm-bg-gray tm-catalog-item-description">
+                                    <h3 class="tm-text-primary mb-3 tm-catalog-item-title">@mod.Titulo</h3>
+                                    <p class="tm-catalog-item-text">
+                                        @*<span class="tm-text-secondary">do not need</span> any JS.*@
+                                        @mod.Descripcion
+                                    </p>
+                                </div>
                             </div>
-                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
-                                <h3 class="tm-text-primary mb-3 tm-catalog-item-title">Nombre Video</h3>
-                                <p class="tm-catalog-item-text">
-                                    @*<span class="tm-text-secondary">do not need</span> any JS.*@
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis eros quis mauris pulvinar tempus vitae at nisl. Integer sagittis erat a purus ultrices, vitae mollis quam suscipit. Pellentesque a urna vel urna pharetra porttitor ut sit amet turpis. Aliquam at tellus ac nulla pulvinar egestas. 
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
-                            <div class="position-relative tm-thumbnail-container">
-                                <img src="~/Content/img/influencer-grabando-nuevo-video_23-2148522553.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="/Home/VideoStream" class="position-absolute tm-img-overlay">
-                                    <i class="fas fa-play tm-overlay-icon"></i>
-                                </a>
-                            </div>
-                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
-                                <h3 class="tm-text-primary mb-3 tm-catalog-item-title">Nombre Video</h3>
-                                <p class="tm-catalog-item-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis eros quis mauris pulvinar tempus vitae at nisl. Integer sagittis erat a purus ultrices, vitae mollis quam suscipit. Pellentesque a urna vel urna pharetra porttitor ut sit amet turpis. Aliquam at tellus ac nulla pulvinar egestas.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
-                            <div class="position-relative tm-thumbnail-container">
-                                <img src="~/Content/img/influencer-grabando-nuevo-video_23-2148522553.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="/Home/VideoStream" class="position-absolute tm-img-overlay">
-                                    <i class="fas fa-play tm-overlay-icon"></i>
-                                </a>
-                            </div>
-                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
-                                <h3 class="tm-text-primary mb-3 tm-catalog-item-title">Nombre Video</h3>
-                                <p class="tm-catalog-item-text">
-                                    @*<span class="tm-text-secondary">do not need</span> any JS.*@
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis eros quis mauris pulvinar tempus vitae at nisl. Integer sagittis erat a purus ultrices, vitae mollis quam suscipit. Pellentesque a urna vel urna pharetra porttitor ut sit amet turpis. Aliquam at tellus ac nulla pulvinar egestas.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
-                            <div class="position-relative tm-thumbnail-container">
-                                <img src="~/Content/img/influencer-grabando-nuevo-video_23-2148522553.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="/Home/VideoStream" class="position-absolute tm-img-overlay">
-                                    <i class="fas fa-play tm-overlay-icon"></i>
-                                </a>
-                            </div>
-                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
-                                <h3 class="tm-text-primary mb-3 tm-catalog-item-title">Nombre Video</h3>
-                                <p class="tm-catalog-item-text">
-                                    @*<span class="tm-text-secondary">do not need</span> any JS.*@
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis eros quis mauris pulvinar tempus vitae at nisl. Integer sagittis erat a purus ultrices, vitae mollis quam suscipit. Pellentesque a urna vel urna pharetra porttitor ut sit amet turpis. Aliquam at tellus ac nulla pulvinar egestas.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
-                            <div class="position-relative tm-thumbnail-container">
-                                <img src="~/Content/img/influencer-grabando-nuevo-video_23-2148522553.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="/Home/VideoStream" class="position-absolute tm-img-overlay">
-                                    <i class="fas fa-play tm-overlay-icon"></i>
-                                </a>
-                            </div>
-                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
-                                <h3 class="tm-text-primary mb-3 tm-catalog-item-title">Nombre Video</h3>
-                                <p class="tm-catalog-item-text">
-                                    @*<span class="tm-text-secondary">do not need</span> any JS.*@
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis eros quis mauris pulvinar tempus vitae at nisl. Integer sagittis erat a purus ultrices, vitae mollis quam suscipit. Pellentesque a urna vel urna pharetra porttitor ut sit amet turpis. Aliquam at tellus ac nulla pulvinar egestas.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
-                            <div class="position-relative tm-thumbnail-container">
-                                <img src="~/Content/img/influencer-grabando-nuevo-video_23-2148522553.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="/Home/VideoStream" class="position-absolute tm-img-overlay">
-                                    <i class="fas fa-play tm-overlay-icon"></i>
-                                </a>
-                            </div>
-                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
-                                <h3 class="tm-text-primary mb-3 tm-catalog-item-title">Nombre Video</h3>
-                                <p class="tm-catalog-item-text">
-                                    @*<span class="tm-text-secondary">do not need</span> any JS.*@
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis eros quis mauris pulvinar tempus vitae at nisl. Integer sagittis erat a purus ultrices, vitae mollis quam suscipit. Pellentesque a urna vel urna pharetra porttitor ut sit amet turpis. Aliquam at tellus ac nulla pulvinar egestas.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
-                            <div class="position-relative tm-thumbnail-container">
-                                <img src="~/Content/img/influencer-grabando-nuevo-video_23-2148522553.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="/Home/VideoStream" class="position-absolute tm-img-overlay">
-                                    <i class="fas fa-play tm-overlay-icon"></i>
-                                </a>
-                            </div>
-                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
-                                <h3 class="tm-text-primary mb-3 tm-catalog-item-title">Nombre Video</h3>
-                                <p class="tm-catalog-item-text">
-                                    @*<span class="tm-text-secondary">do not need</span> any JS.*@
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis eros quis mauris pulvinar tempus vitae at nisl. Integer sagittis erat a purus ultrices, vitae mollis quam suscipit. Pellentesque a urna vel urna pharetra porttitor ut sit amet turpis. Aliquam at tellus ac nulla pulvinar egestas.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
-                            <div class="position-relative tm-thumbnail-container">
-                                <img src="~/Content/img/influencer-grabando-nuevo-video_23-2148522553.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="/Home/VideoStream" class="position-absolute tm-img-overlay">
-                                    <i class="fas fa-play tm-overlay-icon"></i>
-                                </a>
-                            </div>
-                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
-                                <h3 class="tm-text-primary mb-3 tm-catalog-item-title">Nombre Video</h3>
-                                <p class="tm-catalog-item-text">
-                                    @*<span class="tm-text-secondary">do not need</span> any JS.*@
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis eros quis mauris pulvinar tempus vitae at nisl. Integer sagittis erat a purus ultrices, vitae mollis quam suscipit. Pellentesque a urna vel urna pharetra porttitor ut sit amet turpis. Aliquam at tellus ac nulla pulvinar egestas.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
-                            <div class="position-relative tm-thumbnail-container">
-                                <img src="~/Content/img/influencer-grabando-nuevo-video_23-2148522553.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="/Home/VideoStream" class="position-absolute tm-img-overlay">
-                                    <i class="fas fa-play tm-overlay-icon"></i>
-                                </a>
-                            </div>
-                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
-                                <h3 class="tm-text-primary mb-3 tm-catalog-item-title">Nombre Video</h3>
-                                <p class="tm-catalog-item-text">
-                                    @*<span class="tm-text-secondary">do not need</span> any JS.*@
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis eros quis mauris pulvinar tempus vitae at nisl. Integer sagittis erat a purus ultrices, vitae mollis quam suscipit. Pellentesque a urna vel urna pharetra porttitor ut sit amet turpis. Aliquam at tellus ac nulla pulvinar egestas.
-                                </p>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </main>
+                <div class="row">
+                    <div class="col-sm-4 col-lg-4 col-md-4"></div>
+                    <div class="col-sm-4 col-lg-4 col-md-4"></div>
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        @{Html.RenderPartial("_paginator", Model); }
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 

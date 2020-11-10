@@ -13,6 +13,7 @@ namespace CDIWebSite.Controllers
     {
         CDIWebSiteToEntitiesDB db = new CDIWebSiteToEntitiesDB();
         InscriptionsServices i = new InscriptionsServices();
+        VideoStreamServices v = new VideoStreamServices();
 
         [HttpGet]
         public ActionResult Index()
@@ -33,9 +34,12 @@ namespace CDIWebSite.Controllers
         }
 
         [HttpGet]
-        public ActionResult Preachings()
+        public ActionResult Preachings(int? page)
         {
-            return View();
+            page = page == null ? 1 : page;
+            PreachingsVM model = v.GetList((int)page);
+
+            return View(model);
         }
 
         [HttpGet]
@@ -53,6 +57,8 @@ namespace CDIWebSite.Controllers
         [HttpGet]
         public ActionResult Reservations(int? IdEvento)
         {
+            ViewBag.Gender = i.Gender();
+            ViewBag.Edades = i.Edades();
             //if(IdEvento == null)
             //{
             //    return RedirectToAction("Index");

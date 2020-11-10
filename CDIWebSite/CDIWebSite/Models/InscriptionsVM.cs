@@ -15,7 +15,6 @@ namespace CDIWebSite.Models
         public string Sexo { get; set; }
         public string NContacto { get; set; }
         public DateTime FechaNac { get; set; }
-        public int Inscrito { get; set; }
         public DateTime FechaRegistro { get; set; }
 
         public int IdPersona { get; set; }
