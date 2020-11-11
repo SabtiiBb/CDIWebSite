@@ -49,9 +49,10 @@ namespace CDIWebSite.Controllers
         }
 
         [HttpGet]
-        public ActionResult VideoStream()
+        public ActionResult VideoStream(int id)
         {
-            return View();
+            PreachingsVM pre = v.GetVideo(id);
+            return View(pre);
         }
 
         [HttpGet]
@@ -90,6 +91,8 @@ namespace CDIWebSite.Controllers
             }
             return View();
         }
+
+        
 
         //------------------------------------------ END POINTS ------------------------------------------
         public JsonResult IfExist(string mail)
