@@ -93,6 +93,10 @@ namespace CDIWebSite.Controllers
         }
 
         
+        public ActionResult Ministerio()
+        {
+            return View();
+        }
 
         //------------------------------------------ END POINTS ------------------------------------------
         public JsonResult IfExist(string mail)

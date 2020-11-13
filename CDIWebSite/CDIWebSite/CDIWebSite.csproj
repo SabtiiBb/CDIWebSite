@@ -214,6 +214,7 @@
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\InscriptionsVM.cs" />
+    <Compile Include="Models\MinisterioVM.cs" />
     <Compile Include="Models\PreachingsVM.cs" />
     <Compile Include="Models\RegistroVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -231,7 +232,10 @@
     <Content Include="Content\img\103728533_583220682623459_9215873224258469045_o.jpg" />
     <Content Include="Content\img\108205147_602784134000447_5158800697711434897_o %281%29.jpg" />
     <Content Include="Content\img\108205147_602784134000447_5158800697711434897_o.jpg" />
+    <Content Include="Content\img\1486564400-account_81513.png" />
+    <Content Include="Content\img\8852676108816.jpg" />
     <Content Include="Content\img\95042758_547183436227184_8521281262055325696_o.jpg" />
+    <Content Include="Content\img\bootstrap-carousel.png" />
     <Content Include="Content\img\Captura de pantalla 2020-09-26 113634.png" />
     <Content Include="Content\img\CDI.jpeg" />
     <Content Include="Content\img\Cuidamosdeti.png" />
@@ -242,6 +246,7 @@
     <Content Include="Content\img\Diapositiva4.PNG" />
     <Content Include="Content\img\DINOS COMO.png" />
     <Content Include="Content\img\Domingo.png" />
+    <Content Include="Content\img\ejemplos-slider-de-imagenes-basados-twitter-bootstrap-SimpleBootstrapCarouselWithTextAndOverlay.jpg" />
     <Content Include="Content\img\influencer-grabando-nuevo-video_23-2148522553.jpg" />
     <Content Include="Content\img\insp-cuadradas-2.jpg" />
     <Content Include="Content\img\INVOLUCRATE %281%29.png" />
@@ -256,6 +261,7 @@
     <Content Include="Content\img\pexels-kim-stiver-603473.jpg" />
     <Content Include="Content\img\Sabado.png" />
     <Content Include="Content\img\Viernes.png" />
+    <Content Include="Content\Ministerio.css" />
     <Content Include="Content\Predicaciones.css" />
     <Content Include="Content\Stream.css" />
     <Content Include="Content\SweetAlert2\sweetalert2.all.js" />
@@ -432,6 +438,7 @@
     <Content Include="Views\Home\VideoStream.cshtml" />
     <Content Include="Views\Home\Reservations.cshtml" />
     <Content Include="Views\Shared\_paginator.cshtml" />
+    <Content Include="Views\Home\Ministerio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
