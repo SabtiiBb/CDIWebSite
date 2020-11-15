@@ -261,6 +261,7 @@
     <Content Include="Content\img\pexels-kim-stiver-603473.jpg" />
     <Content Include="Content\img\Sabado.png" />
     <Content Include="Content\img\Viernes.png" />
+    <Content Include="Content\MainForm.css" />
     <Content Include="Content\Ministerio.css" />
     <Content Include="Content\Predicaciones.css" />
     <Content Include="Content\Stream.css" />
@@ -334,6 +335,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MainFormJS.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
