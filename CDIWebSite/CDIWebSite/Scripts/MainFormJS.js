@@ -4,8 +4,10 @@
         stepIndex = $step.index(),
         $pag = $('.modal-header span').eq(stepIndex);
 
-    if (stepIndex === 0 || stepIndex === 1) { step1($step, $pag); }
-    else { step3($step, $pag); }
+    $.get("@UrlAction")
+
+    //if (stepIndex === 0 || stepIndex === 1) { step1($step, $pag); }
+    //else { step3($step, $pag); }
 
 });
 

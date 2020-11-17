@@ -15,21 +15,21 @@ namespace CDIWebSite.Services
 
         public void addInscription(InscriptionsVM model)
         {
-            Inscripcione Inscription = new Inscripcione();
-            Inscription.IdPersona = model.IdPersona;
-            Inscription.IdEvento = model.IdEvento;
-            Inscription.Activo = 1;
-            db.Inscripciones.Add(Inscription);
-            db.SaveChanges();
+                Inscripcione Inscription = new Inscripcione();
+                Inscription.IdPersona = model.IdPersona;
+                Inscription.IdEvento = model.IdEvento;
+                Inscription.Activo = 1;
+                db.Inscripciones.Add(Inscription);
+                db.SaveChanges();
 
-            AddCupo(model);
+                AddCupo(model);
         }
 
-        public void addInscriptionIfUserExist(InscriptionsVM model)
+        public void addInscriptionIfUserExist(string Correo, int idEvento)
         {
-            Persona s = db.Personas.Where(x => x.Correo == model.Correo).Single();
+            Persona s = db.Personas.Where(x => x.Correo == Correo).Single();
             Inscripcione inscr = new Inscripcione();
-            inscr.IdEvento = model.IdEvento;
+            inscr.IdEvento = idEvento;
             inscr.IdPersona = s.IdPersona;
             inscr.Activo = 1;
             db.Inscripciones.Add(inscr);
@@ -116,6 +116,13 @@ namespace CDIWebSite.Services
             }
 
             return ListEdades;
+        }
+
+        public int GetPeId(string Correo)
+        {
+            Persona p = db.Personas.Where(x => x.Correo == Correo).Single();
+
+            return p.IdPersona;
         }
 
     }

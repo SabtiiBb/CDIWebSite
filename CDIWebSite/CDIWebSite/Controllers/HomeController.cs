@@ -99,9 +99,15 @@ namespace CDIWebSite.Controllers
         }
 
         //------------------------------------------ END POINTS ------------------------------------------
-        public JsonResult IfExist(string mail)
+
+        [HttpGet]
+        public JsonResult IfExist(string mail, int IdEvento)
         {
             bool Exito = i.verifyIfExistMail(mail);
+            if (Exito)
+            {
+                i.addInscriptionIfUserExist(mail, IdEvento);
+            }
             return Json(Exito, JsonRequestBehavior.AllowGet);
         }
     }

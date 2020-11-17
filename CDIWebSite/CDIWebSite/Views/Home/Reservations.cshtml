@@ -29,10 +29,10 @@
                             @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control ", @placeholder="Nombre" } })
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6">
-                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control ", @placeholder = "Apellido" } })
+                            @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control ", @placeholder = "Apellido" } })
                         </div>
                     </div>
-                    @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control ", @placeholder = "Correo" } })
+                    @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control, email ", @placeholder = "Correo" } })
                     <div class="text-center">
                         <div class="button">Siguiente <i class="fas fa-arrow-right"></i></div>
                     </div>
@@ -86,7 +86,85 @@
 
 @section Scripts{
 
-<script src="~/Scripts/MainFormJS.js"></script>
+@*<script src="~/Scripts/MainFormJS.js"></script>*@
+
+    <script>
+        $('.button').click(function () {
+
+            var e = $('.email').val();
+
+            var $btn = $(this),
+                $step = $btn.parents('.modal-body'),
+                stepIndex = $step.index(),
+                $pag = $('.modal-header span').eq(stepIndex);
+
+            $.get("@UrlAction("IfExist", "Home")?mail=" + e + "", function (Exito) {
+                if (Exito) {
+                    Swal.fire({
+                        title: "¡Felicidades!",
+                        text: "¡Te has inscrito con EXITO!",
+                        icon: "success",
+                        showCancelButton: false,
+                        closeOnConfirm: false
+                    }).then((result) => {
+                        window.location.replace("http://www.casadediosinternacional.com");
+                    })
+                } else {
+                    if (stepIndex === 0 || stepIndex === 1) { step1($step, $pag); }
+                    else { step3($step, $pag); }
+                }
+                });
+
+            //if (stepIndex === 0 || stepIndex === 1) { step1($step, $pag); }
+            //else { step3($step, $pag); }
+
+        });
+
+
+        function step1($step, $pag) {
+            console.log('step1');
+            // animate the step out
+            $step.addClass('animate-out');
+
+            // animate the step in
+            setTimeout(function () {
+                $step.removeClass('animate-out is-showing')
+                     .next().addClass('animate-in');
+                $pag.removeClass('is-active')
+                      .next().addClass('is-active');
+            }, 600);
+
+            // after the animation, adjust the classes
+            setTimeout(function () {
+                $step.next().removeClass('animate-in')
+                      .addClass('is-showing');
+
+            }, 1200);
+        }
+
+
+        function step3($step, $pag) {
+            console.log('3');
+
+            // animate the step out
+            $step.parents('.modal-wrap').addClass('animate-up');
+
+            setTimeout(function () {
+                $('.rerun-button').css('display', 'inline-block');
+            }, 300);
+        }
+
+        $('.rerun-button').click(function () {
+            $('.modal-wrap').removeClass('animate-up')
+                             .find('.modal-body')
+                             .first().addClass('is-showing')
+                             .siblings().removeClass('is-showing');
+
+            $('.modal-header span').first().addClass('is-active')
+                                    .siblings().removeClass('is-active');
+            $(this).hide();
+        });
+    </script>
 
 }
 
