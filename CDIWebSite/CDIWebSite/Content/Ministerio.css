@@ -1,0 +1,91 @@
+﻿
+
+.titulo { }
+
+.Lider { 
+    padding:2rem;
+    text-align:justify;
+}
+
+img{
+    float:left;
+    width:15%
+}
+
+.Carrusel { }
+
+.descripcion { 
+    padding:1rem;
+}
+
+div.imguser { 
+    width:70%;
+    margin:auto;
+}
+
+.Texto {
+    padding:4rem;
+}
+
+/* external css: flickity.css */
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.gallery {
+  text-align:center;
+  margin-left:2rem;
+  margin-right:2rem;
+}
+
+.gallery-cell {
+  width: 25%;
+  margin-right: 10px;
+}
+
+.gallery-cell.is-selected {
+  background: #839b97;
+  color: white;
+}
+
+/* cell number */
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+.grid-containerMinisterios {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0.2fr;
+  grid-template-areas:
+    "ImagenMin"
+    "NombreMin";
+  padding:1rem;
+}
+
+.ImagenMin { grid-area: ImagenMin;
+             display:flex;
+             justify-content:center;
+}
+
+.ImagenMin img{
+    width:52%;  
+}
+
+.NombreMin { grid-area: NombreMin; }
+
+.NombreMin h4{
+    margin-top: 1px;
+    color:black;
+    font-weight: bold;
+}
+
+a:hover{
+    text-decoration:none;
+}
